@@ -40,7 +40,7 @@ router.post("/tablebook", (req, res) => {
       booking.save()
         .then(data => {
           if(!data){
-            res.status(422).json({error:"not booked"})
+           return res.status(422).json({error:"not booked"})
           }
 
         transport.sendMail({
@@ -48,15 +48,14 @@ router.post("/tablebook", (req, res) => {
           from:"noreplyshwarmaclub@gmail.com",
           subject:"table booking confirmation email",
           html:`
-              <h2>Thank you for booking with us</h2>
-              <h4>
+              <h4>Thank you for booking with us</h4>
+              <h5>
               you have booked ${tableName} for ${capacity} peopele on date 
               ${date} for ${location} location.
-              </h4>
+              </h5>
           `
+
         })
-        .then(email=>console.log(email))
-        .catch(err=>console.log(err))
 
           res.json(data)
           console.log(data)
