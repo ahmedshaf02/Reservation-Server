@@ -21,6 +21,6 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes/reservationDetails"));
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log("server is running on port ", PORT);
 });
