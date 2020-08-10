@@ -15,9 +15,9 @@ mongo
   .then(connect => console.log("mongoDb connect"))
   .catch(err => console.log("error", err));
 
-require("./model/reservation");
-require("./model/tableBooking");
-app.use(cors());
+  app.use(cors());
+  require("./model/reservation");
+  require("./model/tableBooking");
 app.use(express.json());
 app.use(require("./routes/reservationDetails"));
 
